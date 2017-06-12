@@ -1,0 +1,86 @@
+<html>
+<style>
+.header md-toolbar md-icon.md-default-theme {
+  color: white; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+<script src="http://cdn.rawgit.com/angular/bower-material/v0.10.0/angular-material.js"></script>
+<link rel="stylesheet" href="http://cdn.rawgit.com/angular/bower-material/v0.10.0/angular-material.css"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+</style>
+<body>
+<div ng-controller="AppCtrl" class="header" ng-app="MyApp"
+	style="margin: auto; width: 800px">
+	<form name="userForm">
+	    <md-input-container flex> 
+		  <label>Old Password</label> 
+		  <input type="password" name="oldPassword" ng-model="oldPassword" required>
+		  <div ng-messages="userForm.oldPassword.$error">
+			  <div ng-message="required">This is required.</div>
+		   </div>
+		</md-input-container>
+		<md-input-container flex> 
+		  <label>New Password</label> 
+		  <input type="password" name="newPassword" ng-model="newPassword" required un-matcher="{{oldPassword}}">
+		  <div ng-messages="userForm.newPassword.$error">
+			  <div ng-message="required">This is required.</div>
+			  <div ng-message="unMatcher">New Password cannot be same as Old
+				Password.</div>
+		   </div>
+		</md-input-container>
+		<md-input-container flex> 
+		  <label>Confirm Password</label> 
+		  <input type="password" name="confirmPassword" ng-model="confirmPassword" required matcher="{{newPassword}}">
+		  <div ng-messages="userForm.confirmPassword.$error">
+			  <div ng-message="required">This is required.</div>
+			  <div ng-message="matcher">Confirm Password should be same as new Password.</div>
+		   </div>
+		</md-input-container>
+		<md-button class="md-raised md-primary" ng-disabled="userForm.$invalid">Sumbit</md-button>
+	</form>
+</div>
+	<script>
+	var app = angular.module('MyApp', [ 'ngMaterial', 'ngMessages' ]);
+
+	app.controller('AppCtrl', function($scope) {
+       $scope.oldPassword = '';
+       $scope.newPassword = '';
+       $scope.confirmPassword = '';
+	});
+
+	app.directive("unMatcher", function($timeout) {
+		return {
+			restrict : "A",
+
+			require : "ngModel",
+
+			link : function(scope, element, attributes, ngModel) {
+				ngModel.$validators.unMatcher = function(modelValue) {
+					return attributes.unMatcher !== modelValue;
+				};
+			}
+		};
+	});
+
+	app.directive("matcher", function($timeout) {
+		return {
+			restrict : "A",
+
+			require : "ngModel",
+
+			link : function(scope, element, attributes, ngModel) {
+				ngModel.$validators.matcher = function(modelValue) {
+					return attributes.matcher === modelValue;
+				};
+			}
+		};
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<html>
+<style>
+.header md-toolbar md-icon.md-default-theme {
+  color: white; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.js"></script>
+<link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.css"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+.myDiv {
+  width:750px;
+  margin:auto;
+}
+.rightPanel {
+    border-left: 1px solid #ccc;
+    background-color: white;
+    margin-left: 20px;
+    margin-top: 8px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    min-height:230px;
+    padding:15px;
+}
+body {
+    background-color:rgb(236,236,236);
+}
+</style>
+<body>
+<div ng-controller="AppCtrl" class="myDiv" ng-app="MyApp">
+   <div layout="row">
+    <div layout="column" style="width:100%" flex="70">
+	 <md-card style="width: 100%;min-height: 144px;" ng-repeat="user in userData | selectedTags:selected">
+	  <md-card-title>
+	    <md-card-title-text>
+	      <span class="md-headline">{{user.name}}</span><br>
+	      <span class="md-subhead">{{user.place}}</span>
+	    </md-card-title-text>
+	    <md-card-title-media>
+	      <div class="md-media-md card-media">
+	       <img src="{{user.pic}}"/>
+	      </div>
+	    </md-card-title-media>
+	  </md-card-title>
+	</md-card>
+    </div>
+    <div layout="column" flex="30" class="rightPanel">
+          <div layout="column" layout-wrap flex>
+            <div ng-repeat="item in places">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                {{ item }}
+              </md-checkbox>
+            </div>
+          </div>
+    </div>
+   </div>
+</div>
+<script>
+angular.module('MyApp', ['ngMaterial', 'ngMessages'])
+.controller('AppCtrl', function($scope, $mdSidenav) {
+	// User Information
+	$scope.userData = [{
+        "id": "1",
+        "name": "Srinivas Dasari",
+        "place": "Chennai",
+        "pic": "https://lh3.googleusercontent.com/-nBqk0jHahk8/VnL9EvT6IPI/AAAAAAAADdU/4JB3A-1zjTM/s160-Ic42/srinivas_dasari.jpg"
+      }, {
+        "id": "2",
+        "name": "Srinivas Tamada",
+        "place": "Atlanta",
+        "pic": "https://lh3.googleusercontent.com/-lkebnHGHGcs/VnL9E4nO_FI/AAAAAAAADdY/z2IWGONMG8E/s160-Ic42/srinivas_tamada.jpg"
+      }, {
+        "id": "3",
+        "name": "Sri Harsha",
+        "place": "Hyderabad",
+        "pic": "https://lh3.googleusercontent.com/-x69ytvh8GkA/VnL9Dqye1jI/AAAAAAAADdM/pBDbJRX8Vxo/s160-Ic42/harsha.jpg"
+      }, {
+        "id": "4",
+        "name": "Lokesh Raghuram",
+        "place": "London",
+        "pic": "https://lh3.googleusercontent.com/-7XM-i20j7CQ/VnL9EZnDLYI/AAAAAAAADdQ/kR99DUgRhak/s160-Ic42/lokesh.jpg"
+      }, {
+        "id": "5",
+        "name": "Bala Ganesh",
+        "place": "Chennai",
+        "pic": "https://lh3.googleusercontent.com/-snzuBGu0CJE/VnL9DksYVSI/AAAAAAAADdA/7Y0EvQbWc7I/s160-Ic42/ganesh.jpg"
+      }, {
+        "id": "6",
+        "name": "Arun kumar",
+        "place": "Visakhapatnam",
+        "pic": "https://lh3.googleusercontent.com/-HiQ4bqPp-fk/VnL9Dqo7u0I/AAAAAAAADdc/NqhwXqgb4Ac/s160-Ic42/arun.jpg"
+      }];
+	
+	 // selected places
+	 $scope.selected = [];
+	 // whole places
+	 $scope.places = [];
+	 
+	 // when user clicks on checkbox, change selected list
+	 $scope.toggle = function (item, list) {
+       var idx = list.indexOf(item);
+       if (idx > -1) list.splice(idx, 1);
+       else list.push(item);
+     };
+     
+     // is item exists in list
+     $scope.exists = function (item, list) {
+       return list.indexOf(item) > -1;
+     };
+     
+     // process user data and prepare whole places
+     angular.forEach($scope.userData, function(user, key) {
+        if($scope.places.indexOf(user.place) == -1) {
+        	$scope.places.push(user.place);
+        }	  
+     });
+	
+}).filter('selectedTags', function() {
+	// filter to check array of elements
+    return function(users, tags) {
+        return users.filter(function(user) {
+            if (tags.indexOf(user.place) != -1) {
+                return true;
+            } else if(tags.length == 0) {
+            	return true;
+            }
+            return false;
+
+        });
+    };
+});
+</script>
+</body>
+</html>

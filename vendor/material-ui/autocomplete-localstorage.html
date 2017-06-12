@@ -1,0 +1,99 @@
+<html>
+<style>
+.header md-toolbar md-icon.md-default-theme {
+  color: white; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+<script src="http://cdn.rawgit.com/angular/bower-material/v0.10.0/angular-material.js"></script>
+<link rel="stylesheet" href="http://cdn.rawgit.com/angular/bower-material/v0.10.0/angular-material.css"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+</style>
+<body>
+<div ng-controller="AppCtrl" class="header" ng-app="MyApp"
+	style="margin: auto; width: 800px">
+  <md-content class="md-padding">
+    <form ng-submit="$event.preventDefault()">
+      <p>Use  <code>md-autocomplete</code> to implement auto complete functionality</p>
+      <md-autocomplete ng-keyup="searchByEnter($event)" ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)" md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)" md-item-text="item" md-min-length="0" placeholder="Enter Some text and click on sumbit">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No matches found for "{{searchText}}".
+        </md-not-found>
+      </md-autocomplete>
+      <md-button class="md-raised md-primary" ng-click="addSearchQueryTORepo()">Submit</md-button>
+      <br/><br/>
+      <div>
+      <b>Local results</b> <br/><br/>
+      {{localStrResults}}
+      </div>
+    </form>
+  </md-content>
+</div>
+	<script>
+var app = angular.module('MyApp', [ 'ngMaterial', 'ngMessages' ]);
+
+app.controller('AppCtrl', function($scope) {
+
+	$scope.localStrResults = [];
+	var st = localStorage.getItem("searchQueries");
+	if(st!=null) {
+		 var states = JSON.parse(st);
+		 $scope.localStrResults = states;
+	}
+	
+	
+	$scope.searchByEnter = function($event) {  
+     if($event.keyCode == 13) {
+       $scope.addSearchQueryTORepo();
+       var myEl = angular.element($event.target);
+       myEl.blur();
+	 }
+   };
+   
+   $scope.addSearchQueryTORepo = function() {
+     var lowCaseSearchStr = $scope.searchText.toLowerCase();
+     var searchQueries = localStorage.getItem("searchQueries");
+     var sQrs = [];
+	 if(searchQueries != null) {
+		sQrs = JSON.parse(searchQueries);
+		var sind = sQrs.indexOf(lowCaseSearchStr);
+		if(sind != -1) {
+		  sQrs.splice(sind,1);	
+		}
+	  	  sQrs.splice(0,0,lowCaseSearchStr);
+		  localStorage.setItem("searchQueries", JSON.stringify(sQrs));
+		} else {
+		  sQrs.splice(0,0,lowCaseSearchStr);
+		  localStorage.setItem("searchQueries", JSON.stringify(sQrs));
+      }
+	 $scope.localStrResults = sQrs;
+	  alert('"'+$scope.searchText+'" was added to local storage');
+   };
+   
+   $scope.querySearch = function(query) {
+	 var st = localStorage.getItem("searchQueries");
+	 if(st!=null) {
+		 var states = JSON.parse(st);
+		 $scope.localStrResults = states;
+	     var searchResults = [];
+	     var myQuery = query.toLowerCase();
+	     for(var i=0;i<states.length;i++) {
+	       if(states[i].toLowerCase().indexOf(myQuery) != -1) {
+	         searchResults.push(states[i]);
+	       }
+	     }
+	     return searchResults;	 
+	 }
+   };
+});
+</script>
+</body>
+</html>

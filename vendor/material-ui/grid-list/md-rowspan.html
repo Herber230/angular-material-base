@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.header md-toolbar md-icon.md-default-theme {
+  color: white; }
+</style>
+<script src="../lib/angular.js"></script>
+<script src="../lib/angular-animate.min.js"></script>
+<script src="../lib/angular-route.min.js"></script>
+<script src="../lib/angular-aria.min.js"></script>
+<script src="../lib/angular-messages.min.js"></script>
+<script src="../lib/angular-material.js"></script>
+<link rel="stylesheet" href="../lib/angular-material.css"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+ md-grid-list {
+  margin: 8px; }
+ .gray {
+  background: #f5f5f5; }
+ .green {
+  background: #b9f6ca; }
+ .yellow {
+  background: #ffff8d; }
+ .blue {
+  background: #84ffff; }
+ .purple {
+  background: #b388ff; }
+ .red {
+  background: #ff8a80; }
+ md-grid-tile {
+  transition: all 400ms ease-out 50ms; }
+</style>
+</head>
+<body>
+
+<div ng-controller="AppCtrl" class="header" ng-app="MyApp">
+<md-grid-list md-cols="9" md-gutter="12px" md-row-height="1:1">
+    <md-grid-tile class="green"  md-rowspan-gt-md="3" md-rowspan-md="2" md-rowspan-sm="2">
+      <md-grid-tile-footer>
+        <h3>first tile</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile class="blue"  md-rowspan-gt-md="2" md-rowspan-md="3" md-rowspan-sm="1">
+      <md-grid-tile-footer>
+        <h3>second tile</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile class="purple"  md-rowspan-gt-md="1" md-rowspan-md="1" md-rowspan-sm="3">
+      <md-grid-tile-footer>
+        <h3>third tile</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+<script>
+angular.module('MyApp', ['ngMaterial'])
+.controller('AppCtrl', function($scope, $mdSidenav) {
+	
+});
+</script>
+</body>
+</html>

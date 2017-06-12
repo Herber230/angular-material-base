@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../lib/angular.js"></script>
+<script src="../lib/angular-animate.min.js"></script>
+<script src="../lib/angular-route.min.js"></script>
+<script src="../lib/angular-aria.min.js"></script>
+<script src="../lib/angular-messages.min.js"></script>
+<script src="../lib/angular-material.js"></script>
+<link rel="stylesheet" href="http://demo.sodhanalibrary.com/angular/material-ui/lib/angular-material.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+.header md-toolbar md-icon.md-default-theme {
+  color: white; }
+  
+.panel {
+    padding: 50px 10px;
+    text-align: center;
+    margin: 10px 0px;
+    border: 1px solid #ccc;
+    font-size: 25px;
+}
+</style>
+</head>
+<body>
+<div ng-controller="AppCtrl" class="header" ng-app="MyApp">
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" hide-gt-sm show-sm>
+          <md-tooltip>Menu</md-tooltip>
+          <img src="menu.png" style="width:24px;height:24px;"/>
+        </md-button>
+        <h2>
+          <span>Heading</span>
+        </h2>
+        <span flex=""></span>
+        <md-button class="md-icon-button" hide-gt-md show-sm show-md>
+          <md-tooltip>Menu</md-tooltip>
+          <img src="menu.png" style="width:24px;height:24px;"/>
+        </md-button>
+      </div>
+     </md-toolbar>
+     <div layout="row">
+       <div class="panel" flex="20" flex-md="30" show-gt-sm hide-sm>Left Side Panel</div>
+       <div class="panel" flex="60" flex-sm="100" flex-md="70">News Feed</div>
+       <div class="panel" flex="20" show-gt-md hide-sm hide-md>Right Side Panel</div>
+     </div>
+</div>
+<script>
+angular.module('MyApp', ['ngMaterial'])
+.controller('AppCtrl', function($scope, $mdSidenav) {
+	
+});
+</script>
+</body>
+</html>
