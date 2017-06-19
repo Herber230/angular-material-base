@@ -3,8 +3,39 @@
     <center>
         <h3>Vista 2</h3>
     </center>
+
+    <form name="userForm">
+        <md-input-container>
+            <label>Last Name</label>
+            <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
+            <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+                <div ng-message="required">This is required!</div>
+                <div ng-message="md-maxlength">That's too long!</div>
+                <div ng-message="minlength">That's too short!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Biography</label>
+            <textarea name="bio" ng-model="biography" required md-maxlength="150"></textarea>
+            <div ng-messages="userForm.bio.$error" ng-show="userForm.bio.$dirty">
+                <div ng-message="required">This is required!</div>
+                <div ng-message="md-maxlength">That's too long!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <input aria-label="title" ng-model="title">
+        </md-input-container>
+        <md-input-container>
+            <input placeholder="title" ng-model="title">
+        </md-input-container>
+    </form>
+
+
+    </br>
+    </br>
+    </br>
+
+
 </div>
-    
+
 <br/>
-
-

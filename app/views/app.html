@@ -1,45 +1,31 @@
-<div class="ui-view-container">
-    <div class="animated-view">
 
-        <!-- START Top Navbar-->
-        <div ng-cloak>
-            <md-content class="md-padding">
+<div layout="row">
+    <div layout="vertical">
 
-                <md-nav-bar>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" flex>
+            <md-toolbar class="md-medium-tall" md-colors="{background: 'pink'}">
+                <span>sidenav</span>
+            </md-toolbar>
+            <md-content layout="column" flex>
+                <span>Your sidenav</span>
+            </md-content>
+        </md-sidenav>
 
-                    <md-nav-item ng-repeat="element in vm.navbarElements" md-nav-href="{{element.href}}">
-                        {{element.name}}
-                    </md-nav-item>
+    </div>
 
-                </md-nav-bar>
+    <div flex>
+        <div layout="column" flex>
 
-                <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-                    <md-toolbar layout="row">
-                        <div class="md-toolbar-tools">
-                            <h2>
-                                <span>Side Panel</span>
-                            </h2>
-                            <span flex></span>
-                            <md-button class="md-icon-button" aria-label="Close Side Panel" ng-click="vm.closeSideNavPanel()">
-                                <md-tooltip>Close Side Panel</md-tooltip>
-                                <md-icon class="material-icons">clear</md-icon>
-                            </md-button>
-                        </div>
-                    </md-toolbar>
-                    <md-content layout-padding="">
-                        Side navigation Panel
-                    </md-content>
-                </md-sidenav>
-
+            <div>
                 <md-toolbar>
                     <div class="md-toolbar-tools">
-                        <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()">
+                        <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()" hide-gt-md>
                             <md-tooltip>Open Side Panel</md-tooltip>
-                            <md-icon class="md-default-theme" class="material-icons">menu</md-icon>
+                            <md-icon class="material-icons">menu</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Icon">
                             <md-tooltip>User</md-tooltip>
-                            <md-icon class="md-default-theme" md-svg-icon="fb.svg"></md-icon>
+                            <md-icon class="material-icons">account_circle</md-icon>
                         </md-button>
                         <h2>
                             <span>Heading</span>
@@ -51,47 +37,162 @@
                         <span flex></span>
                         <md-button class="md-icon-button" aria-label="User">
                             <md-tooltip>User</md-tooltip>
-                            <img src="user.png" style="width:24px;height:24px;" />
+                            <md-icon class="material-icons">account_circle</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Messages">
                             <md-tooltip>Messages</md-tooltip>
-                            <img src="messages.png" style="width:24px;height:24px;" />
+                            <md-icon class="material-icons">message</md-icon>
                         </md-button>
                     </div>
                 </md-toolbar>
-
-                <br/>
-                <div class="container-fluid">
-                    <div ui-view="" autoscroll="false" ng-class="ng-fadeInUp"></div>
-                </div>
-
-                <div>
-                    <br class="hidden-xs" />
-                    <center>
-                        <span style="font-size: 16px;">
-                            {{vm.projectName}}
-                        </span>
-                        <br />
-                        <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
-                        <br class="hidden-xs" /><br class="hidden-xs" />
-                        <span style="font-size: 11px; color: #787878!important;">
-                        </span>
-                    </center>
-                </div>
-            </md-content>
-
-
+            </div>
         </div>
-    </div>
-    <div class="footer">
-        <span style="font-size: 16px;">
-                            {{vm.projectName}}
-                        </span>
-        <br />
-        <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
-        <br class="hidden-xs" /><br class="hidden-xs" />
-        <span style="font-size: 11px; color: #787878!important;">
-                        </span>
-    </div>
 
+        <footer class="footer"  md-colors="{background: 'indigo'}">
+
+            <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
+            <br class="hidden-xs" /><br class="hidden-xs" />
+            <span style="font-size: 11px; color: #787878!important;"></span>
+
+
+
+        </footer>
+
+    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div layout="column">
+  <div flex>First item in column</div>
+  <div flex>Second item in column</div>
+</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div layout="column" style="height:500px;" ng-cloak>-->
+
+<!--<section layout="row" flex>
+
+        <div flex layout="row">-->
+
+<!--<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" fullscreen>
+                <md-toolbar class="md-medium-tall" md-colors="{background: 'pink'}" >
+                    <span>sidenav</span>
+                </md-toolbar>
+                <md-content layout="column" flex>
+                    <span>Your sidenav</span>
+                </md-content>
+            </md-sidenav>-->
+
+
+
+
+<!--<md-content flex >
+
+                <div layout="column" flex >
+
+
+                    <div>
+                        <md-toolbar>
+                            <div class="md-toolbar-tools">
+                                <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()"  hide-gt-md>
+                                    <md-tooltip>Open Side Panel</md-tooltip>
+                                    <md-icon class="material-icons">menu</md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Icon">
+                                    <md-tooltip>User</md-tooltip>
+                                    <md-icon class="material-icons">account_circle</md-icon>
+                                </md-button>
+                                <h2>
+                                    <span>Heading</span>
+                                </h2>
+                                <md-input-container md-no-float class="md-accent" flex="50" style="padding-bottom:0px;margin-left:25px">
+                                    <md-icon style="color:wheat" class="material-icons">&#xE8B6;</md-icon>
+                                    <input ng-model="searchInput" placeholder="Search here" style="color:wheat;padding-left:25px;margin-left:5px">
+                                </md-input-container>
+                                <span flex></span>
+                                <md-button class="md-icon-button" aria-label="User">
+                                    <md-tooltip>User</md-tooltip>
+                                    <md-icon class="material-icons">account_circle</md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Messages">
+                                    <md-tooltip>Messages</md-tooltip>
+                                    <md-icon class="material-icons">message</md-icon>
+                                </md-button>
+                            </div>
+                        </md-toolbar>
+                    </div>
+
+                    <div>
+                        <md-nav-bar>
+
+                            <md-nav-item ng-repeat="element in vm.navbarElements" md-nav-href="{{element.href}}">
+                                {{element.name}}
+                            </md-nav-item>
+
+                        </md-nav-bar>
+
+                    </div>
+
+                    <div class="box1">
+
+                        <div class="container-fluid" layout-padding>
+                            <div ui-view="" autoscroll="false" ></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <footer class="footer" md-colors="{background: 'indigo'}">
+
+                    <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
+                    <br class="hidden-xs" /><br class="hidden-xs" />
+                    <span style="font-size: 11px; color: #787878!important;"></span>
+
+
+
+                </footer>
+
+            </md-content>-->
+
+
+
+<!--</div>
+    </section>-->
+<!--</div>-->
