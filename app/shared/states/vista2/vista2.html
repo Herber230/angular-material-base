@@ -1,40 +1,28 @@
 <div>
     <br/>
     <center>
-        <h3>Vista 2</h3>
+        <h3>Nuevo Empleado</h3>
     </center>
-
-
-    <!--<md-input-container>
-        <label>Biography</label>
-        <textarea name="bio" ng-model="biography" required md-maxlength="150"></textarea>
-        <div ng-messages="userForm.bio.$error" ng-show="userForm.bio.$dirty">
-            <div ng-message="required">This is required!</div>
-            <div ng-message="md-maxlength">That's too long!</div>
-        </div>
-    </md-input-container>
-    <md-input-container>
-        <input aria-label="title" ng-model="title">
-    </md-input-container>
-    <md-input-container>
-        <input placeholder="title" ng-model="title">
-    </md-input-container>-->
-
-
-
-    <form name="userForm">
+    <!--novalidate ng-submit="vm.entityForm.$valid && vm.submit()" -->
+    <form name="vm.userForm" validate ng-submit="vm.userForm.$valid && vm.save()">
 
 
         <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-icon-float md-block" flex-gt-sm>
                 <label>Nombre</label>
-                <input ng-model="user.firstName" required>
+                <md-icon class="material-icons">account_circle</md-icon>
+                <input name="nombre" ng-model="vm.nombre" required minlength="3">
+                <div ng-messages="vm.userForm.nombre.$error" ng-show="vm.userForm.nombre.$dirty">
+                    <div ng-message="required">Este campo es requerido!</div>
+                    <div ng-message="minlength">El nombre debe contener al menos 3 caracteres</div>
+                </div>
 
             </md-input-container>
 
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-icon-float md-block" flex-gt-sm>
                 <label>Apellido</label>
-                <input ng-model="theMax" required>
+                <md-icon class="material-icons">account_circle</md-icon>
+                <input ng-model="vm.apellido" required>
             </md-input-container>
 
 
@@ -42,22 +30,24 @@
 
         <div layout-gt-sm="row" layout-ms="column">
 
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-icon-float md-block" flex-gt-sm>
                 <label>Correo Electronico</label>
-                <input required type="email" name="clientEmail" ng-model="project.clientEmail" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"
+                <md-icon class="material-icons">mail</md-icon>
+                <input required type="email" name="clientEmail" ng-model="vm.clientEmail" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"
                     placeholder="ejemplo@mail.com" />
 
-                <div ng-messages="userForm.clientEmail.$error" role="alert">
+                <div ng-messages="vm.userForm.clientEmail.$error" role="alert">
                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                         Tu correo debe contener un esquema de email (xxxxx@mail.com).
                     </div>
                 </div>
             </md-input-container>
 
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-icon-float md-block" flex-gt-sm>
                 <label>Telefono</label>
-                <input name="telefono" ng-model="telefono" required md-maxlength="8" minlength="8">
-                <div ng-messages="userForm.telefono.$error" ng-show="userForm.telefono.$dirty">
+                <md-icon class="material-icons">phone</md-icon>
+                <input name="telefono" ng-model="vm.telefono" required md-maxlength="8" minlength="8">
+                <div ng-messages="vm.userForm.telefono.$error" ng-show="vm.userForm.telefono.$dirty">
                     <div ng-message="required">Este campo es requerido!</div>
                     <div ng-message="md-maxlength">El texto es demasiado largo!</div>
                     <div ng-message="minlength">El telefono es muy corto!</div>
@@ -67,8 +57,8 @@
         </div>
 
         <div layout="row" layout-align="end" flex>
-            <md-button ng-click="clearValue()" ng-disabled="!(quest || favoriteColor)">Clear</md-button>
-            <md-button ng-click="save()" class="md-primary">Save</md-button>
+            <md-button ng-click="vm.clearValue()" ng-disabled="!(vm.nombre || vm.apellido) && (vm.clientEmail || vm.telefono)">Limpiar</md-button>
+            <md-button ng-submit="vm.save()" type="submit" class="md-primary">Guardar</md-button>
         </div>
     </form>
 
