@@ -9,3 +9,12 @@
 .main-toolbar{
   position:fixed !important;
 }
+
+.footer-powered-by{
+  font-size: 16px; font-weight: bold; opacity: 0.4;
+  display: block;
+  margin: 0 auto;
+}
+.footer-project-name{
+  font-size: 16px;
+}

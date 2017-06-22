@@ -51,11 +51,11 @@
                         <span flex></span>
                         <md-button class="md-icon-button" aria-label="User">
                             <md-tooltip>User</md-tooltip>
-                            <img src="" style="width:24px;height:24px;"/>
+                            <md-icon class="material-icons">account_circle</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Messages">
                             <md-tooltip>Messages</md-tooltip>
-                            <img src="" style="width:24px;height:24px;"/>
+                            <md-icon class="material-icons">message</md-icon>
                         </md-button>
                     </div>
                 </md-toolbar>
@@ -65,24 +65,17 @@
                     <div ui-view="" autoscroll="false" ng-class="ng-fadeInUp"></div>
                 </div>
 
-                <footer layout="row" layout-align="center">
-                    <div>
-                        <br class="hidden-xs"/>
-                        <center>
-                            <span style="font-size: 16px;">
-                                {{vm.projectName}}
-                            </span>
-                            <br />
-                            <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
-                                <br class="hidden-xs"/><br class="hidden-xs"/>
-                                <span style="font-size: 11px; color: #787878!important;">
-                            </span>
-                        </center>
-                    </div>
-                </footer>
-
             </md-content>
 
+
+        <footer class="footer"  md-colors="{background: 'indigo'}">
+            <br/>
+            <center>
+                <span class="footer-project-name">{{vm.projectName}}</span>
+                <span class="footer-powered-by">{{vm.poweredBy}}</span>
+            </center>
+            <br/>
+        </footer>
 
         </div>
     </div>
