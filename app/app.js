@@ -9,7 +9,8 @@ var appMainModule = 'angularMaterial';
                                                 'ngAnimate', 
                                                 'oc.lazyLoad',
                                                 'ngMessages',
-                                                'ngMaterial'
+                                                'ngMaterial',
+                                                'md.data.table'
                                                                 ]);
 
     app.config(configApp).run(runApp);
@@ -95,7 +96,7 @@ var appMainModule = 'angularMaterial';
     //Podrán cargarse además de js, css. 
     //Otra manera de agrupar es por módulos, los cuales serán cargados con un nombre y una colección de archivos.
     
-    app.constant('AppConfig',{'url':'http://localhost:8080/SpringBootRestApi/api/'}) 
+    app.constant('AppConfig',{'url':'http://localhost:8080/CRUDmspas/'}) 
 
     app.constant('APP_REQUIRES', {
         scripts: {

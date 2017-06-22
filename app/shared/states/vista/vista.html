@@ -1,10 +1,54 @@
 <div>
     <br/>
     <center>
-        <h3>Otra Vista de Ejemplo</h3>
+        <h3>Lista Empleados</h3>
     </center>
 </div>
-    
+
 <br/>
 
+<md-button type="button" ng-click="vm.cargarEmpleados()">Listar Empleados</md-button>
 
+<md-button class="md-fab" aria-label="FAB">
+
+  <md-icon class="material-icons" style="color: greenyellow; " ng-click="vm.cargarEmpleados()">pageview</md-icon>
+</md-button>
+
+
+<md-card>
+    <md-toolbar class="md-table-toolbar">
+        <div class="md-toolbar-tools">
+            <span>Listado Empleados</span>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+
+        <md-table-container>
+            <table md-table md-row-select="true" multiple="true">
+                <thead md-head>
+                    <tr md-row>
+                        <th md-column md-numeric>Id</th>
+                        <th md-column md-numeric>Nombre</th>
+                        <th md-column md-numeric>Apellido</th>
+                        <th md-column md-numeric>Email</th>
+                        <th md-column md-numeric>Telefono</th>
+
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row md-select="p" ng-repeat="p in vm.listadoEmpleados">
+                        <td md-cell>{{p.id}}</td>
+                        <td md-cell>{{p.firstName}}</td>
+                        <td md-cell>{{p.lastName}}</td>
+                        <td md-cell>{{p.email}}</td>
+                        <td md-cell>{{p.phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+    </md-card-content>
+    <md-card-footer>
+      
+    </md-card-footer>
+</md-card>
