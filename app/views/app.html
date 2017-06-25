@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div layout="row">
     <div layout="vertical" style="height: 100vh;">
 
@@ -17,6 +18,42 @@
 
             <div>
                 <md-toolbar>
+=======
+<div class="ui-view-container">
+    <div class="animated-view">
+        
+        <!-- START Top Navbar-->
+        <div ng-cloak>
+            <md-content>
+                
+                <!--<md-nav-bar>
+
+                    <md-nav-item ng-repeat="element in vm.navbarElements" md-nav-href="{{element.href}}">
+                        {{element.name}}
+                    </md-nav-item>
+                
+                </md-nav-bar>-->
+
+                <md-sidenav class="md-sidenav-left md-whiteframe-24dp" md-component-id="left">
+                    <md-toolbar layout="row" class="md-tall">
+                        <div class="md-toolbar-tools">
+                            <div class="parent" layout="column" flex>
+                                <img src="app/img/logo.png" class="side-menu-logo">
+                            </div>
+                            <span flex></span>
+                            <md-button class="md-icon-button" aria-label="Cerrar Menú" ng-click="vm.closeSideNavPanel()">
+                                <md-tooltip>Cerrar Menú</md-tooltip>
+                                <md-icon class="material-icons">clear</md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar> 
+                    <md-content layout-padding="">
+                        Side navigation Panel
+                    </md-content> 
+                </md-sidenav>
+
+                <md-toolbar class="main-toolbar">
+>>>>>>> barbaJason
                     <div class="md-toolbar-tools">
                         <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()" hide-gt-md>
                             <md-tooltip>Open Side Panel</md-tooltip>
@@ -24,15 +61,20 @@
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Icon">
                             <md-tooltip>User</md-tooltip>
+<<<<<<< HEAD
                             <md-icon class="material-icons">home</md-icon>
+=======
+                            <md-icon class="md-default-theme" md-svg-icon=""></md-icon>
+>>>>>>> barbaJason
                         </md-button>
                         <h2>
-                            <span>Heading</span>
+                            <span></span>
                         </h2>
 
                         <span flex></span>
                         <md-button class="md-icon-button" aria-label="User">
                             <md-tooltip>User</md-tooltip>
+<<<<<<< HEAD
                             <md-icon class="material-icons">account_circle</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Messages">
@@ -42,6 +84,37 @@
                     </div>
                 </md-toolbar>
             </div>
+=======
+                            <img src="" style="width:24px;height:24px;"/>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Messages">
+                            <md-tooltip>Messages</md-tooltip>
+                            <img src="" style="width:24px;height:24px;"/>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                
+                <br/><br/><br/>
+                <div class="container-fluid">
+                    <div ui-view="" autoscroll="false" ng-class="ng-fadeInUp"></div>
+                </div>
+
+                <footer layout="row" layout-align="center">
+                    <div>
+                        <br class="hidden-xs"/>
+                        <center>
+                            <span style="font-size: 16px;">
+                                {{vm.projectName}}
+                            </span>
+                            <br />
+                            <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
+                                <br class="hidden-xs"/><br class="hidden-xs"/>
+                                <span style="font-size: 11px; color: #787878!important;">
+                            </span>
+                        </center>
+                    </div>
+                </footer>
+>>>>>>> barbaJason
 
             <div>
                 <md-nav-bar>

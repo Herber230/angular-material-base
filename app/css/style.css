@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .header md-toolbar md-icon.md-default-theme {
   color: white; 
   }
@@ -12,3 +13,16 @@
 
 
 
+=======
+.side-menu-logo{
+  width: 240px;
+  height: 225px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 55px;
+}
+
+.main-toolbar{
+  position:fixed !important;
+}
+>>>>>>> barbaJason
