@@ -71,6 +71,30 @@ var appMainModule = 'angularMaterial';
                 controller: 'Vista3Controller',
                 controllerAs: 'vm',
                 resolve: helper.resolveFor('Vista3Ctrl')
+            })
+            .state('app.subvista1', {
+                url: '/subvista1',
+                title: 'Subvista 1',
+                templateUrl: helper.basepath('/shared/states/subvista1/subvista1.html'),
+                controller: 'Subvista1Controller',
+                controllerAs: 'vm',
+                resolve: helper.resolveFor('Subvista1Ctrl')
+            })
+            .state('app.subvista2', {
+                url: '/subvista2',
+                title: 'Subvista 2',
+                templateUrl: helper.basepath('/shared/states/subvista2/subvista2.html'),
+                controller: 'Subvista2Controller',
+                controllerAs: 'vm',
+                resolve: helper.resolveFor('Subvista2Ctrl')
+            })
+            .state('app.subvista3', {
+                url: '/subvista3',
+                title: 'Subvista 3',
+                templateUrl: helper.basepath('/shared/states/subvista3/subvista3.html'),
+                controller: 'Subvista3Controller',
+                controllerAs: 'vm',
+                resolve: helper.resolveFor('Subvista3Ctrl')
             });
     };
 
@@ -108,6 +132,9 @@ var appMainModule = 'angularMaterial';
             //Controllers for Views ======================================================================================================================================
             'HomeCtrl':                             ['app/shared/states/home/homeController.js'],
             'VistaCtrl':                            ['app/shared/states/vista/vistaController.js'],
+            'Subvista1Ctrl':                        ['app/shared/states/subvista1/subvista1Controller.js'],
+            'Subvista2Ctrl':                        ['app/shared/states/subvista2/subvista2Controller.js'],
+            'Subvista3Ctrl':                        ['app/shared/states/subvista3/subvista3Controller.js'],
             'Vista2Ctrl':                           ['app/shared/states/vista2/vista2Controller.js'],
             'Vista3Ctrl':                           ['app/shared/states/vista3/vista3Controller.js']
 
@@ -232,56 +259,61 @@ var appMainModule = 'angularMaterial';
             {
                 name: "Inicio",
                 href: "#!/app/home",
-                icon: ""
+                icon: "home",
+                click: () => { $state.go('app.home'); },
+                state: "app.home"
             },
             {
                 name: "Vista 1",
                 href: "#!/app/vista",
-                icon: "",
+                icon: "favorite",
+                state: "app.vista",
                 submenuItems: [
                     {
                         name: "Submenu 1",
-                        href: "#!/app/vista/submenu1/",
-                        icon: ""
+                        href: "#!/app/subvista1/",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Submenu 2",
-                        href: "#!/app/vista/submenu2",
-                        icon: ""
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
                     }
                 ]
             },
             {
                 name: "Vista 2",
                 href: "#!/app/vista2",
-                icon: "",
+                icon: "build",
+                state: "app.vista2",
                 submenuItems: [
                     {
                         name: "Submenu 1",
-                        href: "#!/app/vista/submenu1/",
-                        icon: ""
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     }
                 ]
             },
             {
                 name: "Vista 3",
                 href: "#!/app/vista3",
-                icon: "",
+                icon: "code",
+                state: "app.vista3",
                 submenuItems: [
                     {
                         name: "Submenu 1",
-                        href: "#!/app/vista/submenu1/",
-                        icon: ""
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Submenu 2",
-                        href: "#!/app/vista/submenu2",
-                        icon: ""
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
                     },
                     {
                         name: "Submenu 3",
-                        href: "#!/app/vista3/submenu3",
-                        icon: ""
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
                     }
                 ]
             }
@@ -291,12 +323,22 @@ var appMainModule = 'angularMaterial';
             
         ];
 
+        vm.clickElement = function(element)
+        {
+            if (element && element.click)
+                element.click();
+        };
+
         vm.showMobileMainHeader = true;
         vm.openSideNavPanel = function() {
             $mdSidenav('left').open();
         };
         vm.closeSideNavPanel = function() {
             $mdSidenav('left').close();
+        };
+        vm.goToHome = function()
+        {
+            $state.go("app.home");
         };
         
         //Configuraciones del proyecto, nombre y quién lo desarrolla
