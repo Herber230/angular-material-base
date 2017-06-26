@@ -1,30 +1,35 @@
-<div class="ui-view-container">
-    <div class="animated-view">
-
-        <!-- START Top Navbar-->
-        <div ng-cloak>
-            <!--<md-content>-->
-
-
-                <md-sidenav class="md-sidenav-left md-whiteframe-24dp" md-component-id="left">
-                    <md-toolbar layout="row" class="md-tall">
-                        <div class="md-toolbar-tools">
-                            <div class="parent" layout="column" flex>
-                                <img src="app/img/logo.png" class="side-menu-logo">
+<div layout="row">
+    <div layout="vertical" style="height: 100vh;">
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" flex>
+            <md-content md-scroll-y flex layout="column">
+                <md-sidemenu locked="true">
+                    <md-sidemenu-group>
+                        <md-toolbar layout="row" class="md-tall">
+                            <div class="md-toolbar-tools">
+                                <div class="parent" layout="column" flex>
+                                    <img src="app/img/logo.png" class="side-menu-logo">
+                                </div>
+                                <span flex></span>
+                                <md-button class="md-icon-button" aria-label="Cerrar Menú" ng-click="vm.closeSideNavPanel()" hide-gt-md>
+                                    <md-tooltip>Cerrar Menú</md-tooltip>
+                                    <md-icon class="material-icons">clear</md-icon>
+                                </md-button>
                             </div>
-                            <span flex></span>
-                            <md-button class="md-icon-button" aria-label="Cerrar Menú" ng-click="vm.closeSideNavPanel()">
-                                <md-tooltip>Cerrar Menú</md-tooltip>
-                                <md-icon class="material-icons">clear</md-icon>
-                            </md-button>
-                        </div>
-                    </md-toolbar>
-                    <md-content layout-padding="">
-                        Side navigation Panel
-                    </md-content>
-                </md-sidenav>
+                        </md-toolbar> 
 
-                <md-toolbar class="main-toolbar">
+                        <md-sidemenu-content ng-repeat="element in vm.navbarElements" md-icon="element.icon" md-heading="{{element.name}}" md-arrow="true" href="{{element.href}}">
+                            <md-sidemenu-button ng-if="element.submenuItems" ng-repeat="subelement in element.submenuItems" href="{{subelement.href}}" md-icon="{{subelement.icon}}">{{subelement.name}}</md-sidemenu-button>
+                        </md-sidemenu-content>
+                    </md-sidemenu-group>
+                </md-sidemenu>
+            </md-content>
+        </md-sidenav>
+    </div>
+
+    <div flex>
+        <div layout="column" flex>
+            <div>
+                <md-toolbar>
                     <div class="md-toolbar-tools">
                         <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()" hide-gt-md>
                             <md-tooltip>Open Side Panel</md-tooltip>
@@ -32,7 +37,7 @@
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Icon">
                             <md-tooltip>User</md-tooltip>
-                            <md-icon class="md-default-theme" md-svg-icon=""></md-icon>
+                            <md-icon class="material-icons">home</md-icon>
                         </md-button>
                         <h2>
                             <span></span>
@@ -41,65 +46,36 @@
                         <span flex></span>
                         <md-button class="md-icon-button" aria-label="User">
                             <md-tooltip>User</md-tooltip>
-                            <img src="" style="width:24px;height:24px;" />
+                            <md-icon class="material-icons">account_circle</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Messages">
                             <md-tooltip>Messages</md-tooltip>
-                            <img src="" style="width:24px;height:24px;" />
+                            <md-icon class="material-icons">message</md-icon>
                         </md-button>
                     </div>
                 </md-toolbar>
+            </div>
 
-                <br/><br/><br/>
-                <div class="container-fluid">
-                    <div ui-view="" autoscroll="false" ng-class="ng-fadeInUp"></div>
-                </div>
-
-                <footer layout="row" layout-align="center">
-                    <div>
-                        <br class="hidden-xs" />
-                        <center>
-                            <span style="font-size: 16px;">
-                                {{vm.projectName}}
-                            </span>
-                            <br />
-                            <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
-                            <br class="hidden-xs" /><br class="hidden-xs" />
-                            <span style="font-size: 11px; color: #787878!important;">
-                            </span>
-                        </center>
-                    </div>
-                </footer>
-        </div>
-    </div>
-</div>
-
-
-                <!--<div>
+            <div>
                 <md-nav-bar>
-
                     <md-nav-item ng-repeat="element in vm.navbarElements" md-nav-href="{{element.href}}">
                         {{element.name}}
                     </md-nav-item>
-
                 </md-nav-bar>
-
             </div>
 
             <div class="container-fluid" layout-padding>
                 <div ui-view="" autoscroll="false"></div>
             </div>
 
+            <footer class="footer"  md-colors="{background: 'indigo'}">
+                <br/>
+                <center>
+                    <span class="footer-project-name">{{vm.projectName}}</span>
+                    <span class="footer-powered-by">{{vm.poweredBy}}</span>
+                </center>
+                <br/>
+            </footer>
         </div>
-
-        <footer class="footer" md-colors="{background: 'indigo'}">
-
-            <span style="font-size: 16px; font-weight: bold; opacity: 0.4;">{{vm.poweredBy}}</span>
-            <br class="hidden-xs" /><br class="hidden-xs" />
-            <span style="font-size: 11px; color: #787878!important;"></span>
-
-
-
-        </footer>-->
-
-     
+    </div>
+</div>

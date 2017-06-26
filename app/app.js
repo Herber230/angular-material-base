@@ -10,7 +10,8 @@ var appMainModule = 'angularMaterial';
                                                 'oc.lazyLoad',
                                                 'ngMessages',
                                                 'ngMaterial',
-                                                'md.data.table'
+                                                'md.data.table',
+                                                'ngMaterialSidemenu'
                                                                 ]);
 
     app.config(configApp).run(runApp);
@@ -105,8 +106,8 @@ var appMainModule = 'angularMaterial';
                                                         
 
             //Controllers for Views ======================================================================================================================================
-            'HomeCtrl':                           ['app/shared/states/home/homeController.js'],
-            'VistaCtrl':                           ['app/shared/states/vista/vistaController.js'],
+            'HomeCtrl':                             ['app/shared/states/home/homeController.js'],
+            'VistaCtrl':                            ['app/shared/states/vista/vistaController.js'],
             'Vista2Ctrl':                           ['app/shared/states/vista2/vista2Controller.js'],
             'Vista3Ctrl':                           ['app/shared/states/vista3/vista3Controller.js']
 
@@ -231,34 +232,64 @@ var appMainModule = 'angularMaterial';
             {
                 name: "Inicio",
                 href: "#!/app/home",
-                click: () => { vm.navCollapsed = true; }
+                icon: ""
             },
             {
-                name: "Otra Vista",
+                name: "Vista 1",
                 href: "#!/app/vista",
-                click: () => { vm.navCollapsed = true; }
+                icon: "",
+                submenuItems: [
+                    {
+                        name: "Submenu 1",
+                        href: "#!/app/vista/submenu1/",
+                        icon: ""
+                    },
+                    {
+                        name: "Submenu 2",
+                        href: "#!/app/vista/submenu2",
+                        icon: ""
+                    }
+                ]
             },
             {
                 name: "Vista 2",
                 href: "#!/app/vista2",
-                click: () => { vm.navCollapsed = true; }
+                icon: "",
+                submenuItems: [
+                    {
+                        name: "Submenu 1",
+                        href: "#!/app/vista/submenu1/",
+                        icon: ""
+                    }
+                ]
             },
             {
                 name: "Vista 3",
                 href: "#!/app/vista3",
-                click: () => { vm.navCollapsed = true; }
+                icon: "",
+                submenuItems: [
+                    {
+                        name: "Submenu 1",
+                        href: "#!/app/vista/submenu1/",
+                        icon: ""
+                    },
+                    {
+                        name: "Submenu 2",
+                        href: "#!/app/vista/submenu2",
+                        icon: ""
+                    },
+                    {
+                        name: "Submenu 3",
+                        href: "#!/app/vista3/submenu3",
+                        icon: ""
+                    }
+                ]
             }
         ];
 
         vm.rightbarElements = [
             
         ];
-
-        vm.clickElement = function(element)
-        {
-            if (element && element.click)
-                element.click();
-        };
 
         vm.showMobileMainHeader = true;
         vm.openSideNavPanel = function() {
