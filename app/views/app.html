@@ -18,7 +18,7 @@
                         </md-toolbar> 
                         
                         <md-sidemenu-content ng-repeat="element in vm.navbarElements" md-icon="{{element.icon}}" md-heading="{{element.name}}" md-arrow="{{element.submenuItems}}" ng-click="vm.clickElement(element)">
-                            <md-sidemenu-button ng-if="element.submenuItems" ng-repeat="subelement in element.submenuItems" ui-sref="{{subelement.state}}">{{subelement.name}}</md-sidemenu-button>
+                            <md-sidemenu-button ng-if="element.submenuItems" ng-repeat="subelement in element.submenuItems" ui-sref="{{subelement.state}}" ng-click="vm.clickElement(element)">{{subelement.name}}</md-sidemenu-button>
                         </md-sidemenu-content>
                     </md-sidemenu-group>
                 </md-sidemenu>
@@ -32,24 +32,24 @@
                 <md-toolbar>
                     <div class="md-toolbar-tools">
                         <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()" hide-gt-md>
-                            <md-tooltip>Open Side Panel</md-tooltip>
+                            <md-tooltip>Abrir el Panel Lateral</md-tooltip>
                             <md-icon class="material-icons">menu</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Icon">
-                            <md-tooltip>Home</md-tooltip>
+                            <md-tooltip>Inicio</md-tooltip>
                             <md-icon class="material-icons" ng-click="vm.goToHome()">home</md-icon>
                         </md-button>
                         <h2>
-                            <span></span>
+                            <span>{{vm.getNavigationRoute()}}</span>
                         </h2>
 
                         <span flex></span>
                         <md-button class="md-icon-button" aria-label="User">
-                            <md-tooltip>User</md-tooltip>
+                            <md-tooltip>Usuario</md-tooltip>
                             <md-icon class="material-icons">account_circle</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Messages">
-                            <md-tooltip>Messages</md-tooltip>
+                            <md-tooltip>Mensajes</md-tooltip>
                             <md-icon class="material-icons">message</md-icon>
                         </md-button>
                     </div>
