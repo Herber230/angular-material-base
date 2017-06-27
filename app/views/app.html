@@ -16,9 +16,9 @@
                                 </md-button>
                             </div>
                         </md-toolbar> 
-
-                        <md-sidemenu-content ng-repeat="element in vm.navbarElements" md-icon="element.icon" md-heading="{{element.name}}" md-arrow="true" href="{{element.href}}">
-                            <md-sidemenu-button ng-if="element.submenuItems" ng-repeat="subelement in element.submenuItems" href="{{subelement.href}}" md-icon="{{subelement.icon}}">{{subelement.name}}</md-sidemenu-button>
+                        
+                        <md-sidemenu-content ng-repeat="element in vm.navbarElements" md-icon="{{element.icon}}" md-heading="{{element.name}}" md-arrow="{{element.submenuItems}}" ng-click="vm.clickElement(element)">
+                            <md-sidemenu-button ng-if="element.submenuItems" ng-repeat="subelement in element.submenuItems" ui-sref="{{subelement.state}}">{{subelement.name}}</md-sidemenu-button>
                         </md-sidemenu-content>
                     </md-sidemenu-group>
                 </md-sidemenu>
@@ -36,8 +36,8 @@
                             <md-icon class="material-icons">menu</md-icon>
                         </md-button>
                         <md-button class="md-icon-button" aria-label="Icon">
-                            <md-tooltip>User</md-tooltip>
-                            <md-icon class="material-icons">home</md-icon>
+                            <md-tooltip>Home</md-tooltip>
+                            <md-icon class="material-icons" ng-click="vm.goToHome()">home</md-icon>
                         </md-button>
                         <h2>
                             <span></span>
