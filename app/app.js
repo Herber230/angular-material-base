@@ -46,7 +46,8 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/home/home.html'),
                 controller: 'HomeController',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('HomeCtrl')
+                resolve: helper.resolveFor('HomeCtrl'),
+                data: { displayRoute: ["Inicio"] }
             })
             .state('app.vista', {
                 url: '/vista',
@@ -54,7 +55,8 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/vista/vista.html'),
                 controller: 'VistaController',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('VistaCtrl')
+                resolve: helper.resolveFor('VistaCtrl'),
+                data: { displayRoute: ["Vista"] }
             })
             .state('app.vista2', {
                 url: '/vista2',
@@ -62,7 +64,8 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/vista2/vista2.html'),
                 controller: 'Vista2Controller',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('Vista2Ctrl')
+                resolve: helper.resolveFor('Vista2Ctrl'),
+                data: { displayRoute: ["Vista 2"] }
             })
             .state('app.vista3', {
                 url: '/vista3',
@@ -70,7 +73,8 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/vista3/vista3.html'),
                 controller: 'Vista3Controller',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('Vista3Ctrl')
+                resolve: helper.resolveFor('Vista3Ctrl'),
+                data: { displayRoute: ["Vista 3"] }
             })
             .state('app.subvista1', {
                 url: '/subvista1',
@@ -78,7 +82,8 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/subvista1/subvista1.html'),
                 controller: 'Subvista1Controller',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('Subvista1Ctrl')
+                resolve: helper.resolveFor('Subvista1Ctrl'),
+                data: { displayRoute: ["Vista", "Subvista 1"] }
             })
             .state('app.subvista2', {
                 url: '/subvista2',
@@ -86,7 +91,8 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/subvista2/subvista2.html'),
                 controller: 'Subvista2Controller',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('Subvista2Ctrl')
+                resolve: helper.resolveFor('Subvista2Ctrl'),
+                data: { displayRoute: ["Vista", "Subvista 2"] }
             })
             .state('app.subvista3', {
                 url: '/subvista3',
@@ -94,7 +100,35 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/subvista3/subvista3.html'),
                 controller: 'Subvista3Controller',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('Subvista3Ctrl')
+                resolve: helper.resolveFor('Subvista3Ctrl'),
+                data: { displayRoute: ["Vista 2", "Subvista 3"] }
+            })
+            .state('app.subvista4', {
+                url: '/subvista4',
+                title: 'Subvista 4',
+                templateUrl: helper.basepath('/shared/states/subvista4/subvista4.html'),
+                controller: 'Subvista4Controller',
+                controllerAs: 'vm',
+                resolve: helper.resolveFor('Subvista4Ctrl'),
+                data: { displayRoute: ["Vista 3", "Subvista 4"] }
+            })
+            .state('app.subvista5', {
+                url: '/subvista5',
+                title: 'Subvista 5',
+                templateUrl: helper.basepath('/shared/states/subvista5/subvista5.html'),
+                controller: 'Subvista5Controller',
+                controllerAs: 'vm',
+                resolve: helper.resolveFor('Subvista5Ctrl'),
+                data: { displayRoute: ["Vista 3", "Subvista 5"] }
+            })
+            .state('app.subvista6', {
+                url: '/subvista6',
+                title: 'Subvista 6',
+                templateUrl: helper.basepath('/shared/states/subvista6/subvista6.html'),
+                controller: 'Subvista6Controller',
+                controllerAs: 'vm',
+                resolve: helper.resolveFor('Subvista6Ctrl'),
+                data: { displayRoute: ["Vista 3", "Subvista 6"] }
             });
     };
 
@@ -135,6 +169,9 @@ var appMainModule = 'angularMaterial';
             'Subvista1Ctrl':                        ['app/shared/states/subvista1/subvista1Controller.js'],
             'Subvista2Ctrl':                        ['app/shared/states/subvista2/subvista2Controller.js'],
             'Subvista3Ctrl':                        ['app/shared/states/subvista3/subvista3Controller.js'],
+            'Subvista4Ctrl':                        ['app/shared/states/subvista4/subvista4Controller.js'],
+            'Subvista5Ctrl':                        ['app/shared/states/subvista5/subvista5Controller.js'],
+            'Subvista6Ctrl':                        ['app/shared/states/subvista6/subvista6Controller.js'],
             'Vista2Ctrl':                           ['app/shared/states/vista2/vista2Controller.js'],
             'Vista3Ctrl':                           ['app/shared/states/vista3/vista3Controller.js']
 
@@ -239,18 +276,30 @@ var appMainModule = 'angularMaterial';
         .module(appMainModule)
         .controller('appController', controller);
 
-    controller.$inject = ['$state', '$mdSidenav'];
+    controller.$inject = ['$state', '$mdSidenav', '$location'];
 
     //Declaración de la función
-    function controller($state, $mdSidenav)
+    function controller($state, $mdSidenav, $location)
     {
 
         var vm = this;
 
         function activate()
         {
-            
+
         };
+
+        vm.getNavigationRoute = function()
+        {
+            if ($state && $state.current)
+            {
+                var displayRoute = '';
+                $state.current.data.displayRoute.forEach((e) => { displayRoute += e + ' > '; } );
+                displayRoute = displayRoute.substr(0, displayRoute.length - 2);
+
+                return displayRoute;
+            }
+        }
 
         //NAVBAR ELEMENTS ________________________________________________________________________________________________________________________________________________ 
         //================================================================================================================================================================
@@ -268,6 +317,7 @@ var appMainModule = 'angularMaterial';
                 href: "#!/app/vista",
                 icon: "favorite",
                 state: "app.vista",
+                click: () => { $state.go('app.vista'); },
                 submenuItems: [
                     {
                         name: "Submenu 1",
@@ -286,11 +336,12 @@ var appMainModule = 'angularMaterial';
                 href: "#!/app/vista2",
                 icon: "build",
                 state: "app.vista2",
+                click: () => { $state.go('app.vista2'); },
                 submenuItems: [
                     {
-                        name: "Submenu 1",
-                        href: "#!/app/subvista1",
-                        state: "app.subvista1"
+                        name: "Submenu 3",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
                     }
                 ]
             },
@@ -299,21 +350,22 @@ var appMainModule = 'angularMaterial';
                 href: "#!/app/vista3",
                 icon: "code",
                 state: "app.vista3",
+                click: () => { $state.go('app.vista3'); },
                 submenuItems: [
                     {
-                        name: "Submenu 1",
-                        href: "#!/app/subvista1",
-                        state: "app.subvista1"
+                        name: "Submenu 4",
+                        href: "#!/app/subvista4",
+                        state: "app.subvista4"
                     },
                     {
-                        name: "Submenu 2",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        name: "Submenu 5",
+                        href: "#!/app/subvista5",
+                        state: "app.subvista5"
                     },
                     {
-                        name: "Submenu 3",
-                        href: "#!/app/subvista3",
-                        state: "app.subvista3"
+                        name: "Submenu 6",
+                        href: "#!/app/subvista6",
+                        state: "app.subvista6"
                     }
                 ]
             }
