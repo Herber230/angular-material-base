@@ -17,9 +17,9 @@ var appMainModule = 'angularMaterial';
     app.config(configApp).run(runApp);
 
 
-    configApp.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', '$ocLazyLoadProvider', 'APP_REQUIRES', 'RouteHelpersProvider'];
+    configApp.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', '$ocLazyLoadProvider', 'APP_REQUIRES', 'RouteHelpersProvider', '$mdThemingProvider'];
 
-    function configApp($stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadProvider, APP_REQUIRES, helper) 
+    function configApp($stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadProvider, APP_REQUIRES, helper, $mdThemingProvider) 
     {   
         
         $ocLazyLoadProvider.config({
@@ -30,6 +30,37 @@ var appMainModule = 'angularMaterial';
 
         $locationProvider.html5Mode(false);
         $urlRouterProvider.otherwise('/app/home');
+
+        //$mdThemingProvider.theme('default')
+        //    .dark();
+        //    .primaryPalette('pink')
+        //    .accentPalette('orange');
+
+        $mdThemingProvider.definePalette('myBarbaPalette', {
+            '50': 'f2f2f2',
+            '100': 'e6e6e6',
+            '200': 'cccccc',
+            '300': 'b3b3b3',
+            '400': 'a6a6a6',
+            '500': '262626',
+            '600': '8c8c8c',
+            '700': '808080',
+            '800': '666666',
+            '900': '4d4d4d',
+            'A100': '404040',
+            'A200': '333333',
+            'A400': '262626',
+            'A700': '000000',
+            'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
+                                                // on this palette should be dark or light
+
+            'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
+            '200', '300', '400', 'A100'],
+            'contrastLightColors': undefined    // could also specify this if default was 'dark'
+        });
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('myBarbaPalette');
 
         $stateProvider
             .state('app', {
