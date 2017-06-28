@@ -37,7 +37,7 @@ var appMainModule = 'angularMaterial';
         //    .accentPalette('orange');
 
         $mdThemingProvider.definePalette('myBarbaPalette', {
-            '50': 'f2f2f2',
+            '50': 'ffffff',
             '100': 'e6e6e6',
             '200': 'cccccc',
             '300': 'b3b3b3',
@@ -344,19 +344,96 @@ var appMainModule = 'angularMaterial';
                 state: "app.home"
             },
             {
-                name: "Vista 1",
+                name: "Catálogos",
                 href: "#!/app/vista",
                 icon: "favorite",
                 state: "app.vista",
                 click: () => { $state.go('app.vista'); },
                 submenuItems: [
                     {
-                        name: "Submenu 1",
+                        name: "Artículos",
                         href: "#!/app/subvista1/",
-                        state: "app.subvista1"
+                        state: "app.subvista1",
+                        submenuItems: [
+                            {
+                                name: "Materiales",
+                                href: "#!/app/subvista2",
+                                state: "app.subvista2"
+                            },
+                            {
+                                name: "Activos Fijos y Fungibles",
+                                href: "#!/app/subvista2",
+                                state: "app.subvista2"
+                            }
+                        ]
                     },
                     {
-                        name: "Submenu 2",
+                        name: "Activos Fijos y Fungibles",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Estados de Artículos",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Características de Artículos",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Marcas y Modelos",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Unidades de Medida",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Grupos y Subgrupos de Artículos",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Nomenclatura Contable",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Renglones",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Ejercicios Contables",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Bodegas",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Libros",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Propietarios",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Proveedores",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Tipos de Documentos",
                         href: "#!/app/subvista2",
                         state: "app.subvista2"
                     }
@@ -426,8 +503,8 @@ var appMainModule = 'angularMaterial';
         
         //Configuraciones del proyecto, nombre y quién lo desarrolla
 
-        vm.projectName = "Angular Material Example";
-        vm.poweredBy = "Powered By Barbarotto";
+        vm.projectName = "Sistema de Almacén e Inventarios";
+        vm.poweredBy = "Powered By SIAMP";
 
         activate();
     };

@@ -4,10 +4,10 @@
             <md-content md-scroll-y flex layout="column">
                 <md-sidemenu locked="true">
                     <md-sidemenu-group>
-                        <md-toolbar layout="row" class="md-tall">
+                        <md-toolbar layout="row" class="md-tall" md-colors="::{background: 'default-primary-50'}">
                             <div class="md-toolbar-tools">
                                 <div class="parent" layout="column" flex>
-                                    <img src="app/img/logo.png" class="side-menu-logo">
+                                    <img src="app/img/logo-single-black-2.png" class="side-menu-logo">
                                 </div>
                                 <span flex></span>
                                 <md-button class="md-icon-button" aria-label="Cerrar Menú" ng-click="vm.closeSideNavPanel()" hide-gt-md>
@@ -77,7 +77,7 @@
                 <div ui-view="" autoscroll="false"></div>
             </div>
 
-            <footer class="footer">
+            <footer class="footer" md-colors="::{background: 'default-primary-500'}">
                 <br/>
                 <center>
                     <span class="footer-project-name">{{vm.projectName}}</span>
