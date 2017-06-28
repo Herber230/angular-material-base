@@ -156,7 +156,7 @@ var appMainModule = 'angularMaterial';
     //Otra manera de agrupar es por módulos, los cuales serán cargados con un nombre y una colección de archivos.
     
     app.constant('AppConfig',{'url':'http://localhost:8080/CRUDmspas/'}) 
-
+    app.constant('colorTema', 'blue-grey')
     app.constant('APP_REQUIRES', {
         scripts: {
             //CSS ========================================================================================================================================================
@@ -276,10 +276,10 @@ var appMainModule = 'angularMaterial';
         .module(appMainModule)
         .controller('appController', controller);
 
-    controller.$inject = ['$state', '$mdSidenav', '$location'];
+    controller.$inject = ['$state', '$mdSidenav', '$location', 'colorTema'];
 
     //Declaración de la función
-    function controller($state, $mdSidenav, $location)
+    function controller($state, $mdSidenav, $location, color)
     {
 
         var vm = this;
@@ -391,6 +391,7 @@ var appMainModule = 'angularMaterial';
 
         vm.projectName = "Angular Material Example";
         vm.poweredBy = "Powered By Barbarotto";
+        vm.colorTema = color;
 
         activate();
     };

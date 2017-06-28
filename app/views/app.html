@@ -4,7 +4,7 @@
             <md-content md-scroll-y flex layout="column">
                 <md-sidemenu locked="true">
                     <md-sidemenu-group>
-                        <md-toolbar layout="row" class="md-tall">
+                        <md-toolbar md-colors="{background: '{{vm.colorTema}}'}" layout="row" class="md-tall">
                             <div class="md-toolbar-tools">
                                 <div class="parent" layout="column" flex>
                                     <img src="app/img/logo.png" class="side-menu-logo">
@@ -29,7 +29,7 @@
     <div flex>
         <div layout="column" flex>
             <div>
-                <md-toolbar>
+                <md-toolbar md-colors="{background: '{{vm.colorTema}}-800'}">
                     <div class="md-toolbar-tools">
                         <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()" hide-gt-md>
                             <md-tooltip>Abrir el Panel Lateral</md-tooltip>
@@ -68,7 +68,7 @@
                 <div ui-view="" autoscroll="false"></div>
             </div>
 
-            <footer class="footer"  md-colors="{background: 'indigo'}">
+            <footer class="footer"  md-colors="{background: '{{vm.colorTema}}-800'}">
                 <br/>
                 <center>
                     <span class="footer-project-name">{{vm.projectName}}</span>

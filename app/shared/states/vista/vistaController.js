@@ -3,11 +3,11 @@
 
     angular.module(appMainModule).controller('VistaController', controller);
 
-    controller.$inject = ['$http', 'AppConfig'];
+    controller.$inject = ['$http', 'AppConfig','colorTema'];
 
-    function controller($http, AppConfig) {
+    function controller($http, AppConfig, color) {
         var vm = this;
-
+        vm.colorTema = color;
         // Properties & Fields ===============================================================================================================================================
 
 

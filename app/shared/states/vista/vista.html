@@ -9,14 +9,8 @@
 
 <md-button type="button" ng-click="vm.cargarEmpleados()">Listar Empleados</md-button>
 
-<md-button class="md-fab" aria-label="FAB">
-
-  <md-icon class="material-icons" style="color: greenyellow; " ng-click="vm.cargarEmpleados()">pageview</md-icon>
-</md-button>
-
-
 <md-card>
-    <md-toolbar class="md-table-toolbar">
+    <md-toolbar md-colors="{background: '{{vm.colorTema}}'}" class="md-table-toolbar">
         <div class="md-toolbar-tools">
             <span>Listado Empleados</span>
         </div>
