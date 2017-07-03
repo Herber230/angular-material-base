@@ -18,7 +18,7 @@
     <md-card-content>
 
         <md-table-container>
-            <table md-table md-row-select="true" multiple="true">
+            <table md-table md-row-select multiple ng-model="selected">
                 <thead md-head>
                     <tr md-row>
                         <th md-column md-numeric>Id</th>
@@ -26,7 +26,6 @@
                         <th md-column md-numeric>Apellido</th>
                         <th md-column md-numeric>Email</th>
                         <th md-column md-numeric>Telefono</th>
-
                     </tr>
                 </thead>
                 <tbody md-body>
