@@ -24,6 +24,10 @@
         };
 
 
+        vm.items = [ { displayName: 'Sub-Vista 4', stateName: 'app.vista3.subvista4'}, 
+                     { displayName: 'Sub-Vista 5', stateName: 'app.vista3.subvista5'},
+                     { displayName: 'Sub-Vista 6', stateName: 'app.vista3.subvista6'} ];
+
         //Call constructor
         init();
     };

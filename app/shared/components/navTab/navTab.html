@@ -1,0 +1,15 @@
+
+
+<div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" layout="column">
+    
+    <span flex></span>
+    <md-tabs md-stretch-tabs="always" md-selected="vm.selectedIndex">
+        <md-tab ng-repeat="item in vm.items" ng-click="vm.goItem(item)">
+            <md-tab-label>{{item.displayName}}</md-tab-label>            
+        </md-tab>
+    </md-tabs>
+    <br/>
+    
+</div>
+
+
