@@ -102,7 +102,7 @@ var appMainModule = 'angularMaterial';
                 templateUrl: helper.basepath('/shared/states/vista3/vista3.html'),
                 controller: 'Vista3Controller',
                 controllerAs: 'vm',
-                resolve: helper.resolveFor('Vista3Ctrl'),
+                resolve: helper.resolveFor('Vista3Ctrl', 'NavTabComp'),
                 data: { displayRoute: ["Vista 3"] }
             })
             .state('app.subvista1', {
@@ -132,7 +132,7 @@ var appMainModule = 'angularMaterial';
                 resolve: helper.resolveFor('Subvista3Ctrl'),
                 data: { displayRoute: ["Vista 2", "Subvista 3"] }
             })
-            .state('app.subvista4', {
+            .state('app.vista3.subvista4', {
                 url: '/subvista4',
                 title: 'Subvista 4',
                 templateUrl: helper.basepath('/shared/states/subvista4/subvista4.html'),
@@ -141,7 +141,7 @@ var appMainModule = 'angularMaterial';
                 resolve: helper.resolveFor('Subvista4Ctrl'),
                 data: { displayRoute: ["Vista 3", "Subvista 4"] }
             })
-            .state('app.subvista5', {
+            .state('app.vista3.subvista5', {
                 url: '/subvista5',
                 title: 'Subvista 5',
                 templateUrl: helper.basepath('/shared/states/subvista5/subvista5.html'),
@@ -150,7 +150,7 @@ var appMainModule = 'angularMaterial';
                 resolve: helper.resolveFor('Subvista5Ctrl'),
                 data: { displayRoute: ["Vista 3", "Subvista 5"] }
             })
-            .state('app.subvista6', {
+            .state('app.vista3.subvista6', {
                 url: '/subvista6',
                 title: 'Subvista 6',
                 templateUrl: helper.basepath('/shared/states/subvista6/subvista6.html'),
@@ -192,17 +192,20 @@ var appMainModule = 'angularMaterial';
 
 
             //Controllers for Views ======================================================================================================================================
-            'HomeCtrl': ['app/shared/states/home/homeController.js'],
-            'VistaCtrl': ['app/shared/states/vista/vistaController.js'],
-            'Subvista1Ctrl': ['app/shared/states/subvista1/subvista1Controller.js'],
-            'Subvista2Ctrl': ['app/shared/states/subvista2/subvista2Controller.js'],
-            'Subvista3Ctrl': ['app/shared/states/subvista3/subvista3Controller.js'],
-            'Subvista4Ctrl': ['app/shared/states/subvista4/subvista4Controller.js'],
-            'Subvista5Ctrl': ['app/shared/states/subvista5/subvista5Controller.js'],
-            'Subvista6Ctrl': ['app/shared/states/subvista6/subvista6Controller.js'],
-            'Vista2Ctrl': ['app/shared/states/vista2/vista2Controller.js'],
-            'Vista3Ctrl': ['app/shared/states/vista3/vista3Controller.js'],
-            'ServiceEmpleado': ['app/js/services/empleadoService.js']
+            'HomeCtrl':                             ['app/shared/states/home/homeController.js'],
+            'VistaCtrl':                            ['app/shared/states/vista/vistaController.js'],
+            'Subvista1Ctrl':                        ['app/shared/states/subvista1/subvista1Controller.js'],
+            'Subvista2Ctrl':                        ['app/shared/states/subvista2/subvista2Controller.js'],
+            'Subvista3Ctrl':                        ['app/shared/states/subvista3/subvista3Controller.js'],
+            'Subvista4Ctrl':                        ['app/shared/states/subvista4/subvista4Controller.js'],
+            'Subvista5Ctrl':                        ['app/shared/states/subvista5/subvista5Controller.js'],
+            'Subvista6Ctrl':                        ['app/shared/states/subvista6/subvista6Controller.js'],
+            'Vista2Ctrl':                           ['app/shared/states/vista2/vista2Controller.js'],
+            'Vista3Ctrl':                           ['app/shared/states/vista3/vista3Controller.js'],
+            'ServiceEmpleado':                      ['app/js/services/empleadoService.js'],
+
+            'NavTabComp':                           ['app/shared/components/navTab/navTab.js']
+
 
             //JavaScript Utils ===========================================================================================================================================
 
@@ -307,13 +310,19 @@ var appMainModule = 'angularMaterial';
 
         };
 
-        vm.getNavigationRoute = function () {
-            if ($state && $state.current) {
-                var displayRoute = '';
-                $state.current.data.displayRoute.forEach((e) => { displayRoute += e + ' > '; });
-                displayRoute = displayRoute.substr(0, displayRoute.length - 2);
 
-                return displayRoute;
+        vm.getNavigationRoute = function()
+        {
+            if ($state && $state.current)
+            {
+                // var displayRoute = '';
+                // $state.current.data.displayRoute.forEach((e) => { displayRoute += e + ' > '; } );
+                // displayRoute = displayRoute.substr(0, displayRoute.length - 2);
+
+                // return displayRoute;
+
+
+                return $state.current.data.displayRoute;
             }
         }
 
@@ -371,17 +380,17 @@ var appMainModule = 'angularMaterial';
                     {
                         name: "Submenu 4",
                         href: "#!/app/subvista4",
-                        state: "app.subvista4"
+                        state: "app.vista3.subvista4"
                     },
                     {
                         name: "Submenu 5",
                         href: "#!/app/subvista5",
-                        state: "app.subvista5"
+                        state: "app.vista3.subvista5"
                     },
                     {
                         name: "Submenu 6",
                         href: "#!/app/subvista6",
-                        state: "app.subvista6"
+                        state: "app.vista3.subvista6"
                     }
                 ]
             }

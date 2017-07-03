@@ -39,8 +39,13 @@
                             <md-tooltip>Inicio</md-tooltip>
                             <md-icon class="material-icons" ng-click="vm.goToHome()">home</md-icon>
                         </md-button>
+
                         <h2>
-                            <span>{{vm.getNavigationRoute()}}</span>
+                            <span ng-repeat="route in vm.getNavigationRoute()">
+                                <md-icon ng-if="$index > 0" class="material-icons">keyboard_arrow_right</md-icon>
+                                {{route}}                                
+                            </span>
+                            <!--<span>{{vm.getNavigationRoute()}}</span>-->
                         </h2>
 
                         <span flex></span>
