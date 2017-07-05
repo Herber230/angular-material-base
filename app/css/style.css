@@ -33,6 +33,12 @@
   position: relative;
   z-index: 1;
 }
+.md-sidemenu-wrapper {
+  height: 0;
+}
+.md-sidemenu-wrapper.md-active {
+  height: auto;
+}
 
 /*=========================   Estilos para el Header, footer y Content =================================================*/
 /**{
@@ -53,14 +59,11 @@
 }
 .header{
   flex: 0 0 auto;  
-  /*background: #aaa;*/
 }
 .content{
-  flex: 1 1 auto;     
-  overflow-y: auto;     
-  background: #f0f5f5;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 .footer{
   flex: 0 0 auto;  
-  /*background: #aaa;*/
 }
