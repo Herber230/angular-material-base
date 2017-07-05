@@ -7,7 +7,7 @@
                         <md-toolbar layout="row" class="md-tall" md-colors="::{background: 'default-primary-50'}">
                             <div class="md-toolbar-tools">
                                 <div class="parent" layout="column" flex>
-                                    <img src="app/img/logo-single-black-2.png" class="side-menu-logo">
+                                    <img src="app/img/logo-mp.png" class="side-menu-logo">
                                 </div>
                                 <span flex></span>
                                 <md-button class="md-icon-button" aria-label="Cerrar Menú" ng-click="vm.closeSideNavPanel()" hide-gt-md>
@@ -15,11 +15,12 @@
                                     <md-icon class="material-icons">clear</md-icon>
                                 </md-button>
                             </div>
-                        </md-toolbar> 
+                        </md-toolbar>
                         
                         <md-sidemenu-content ng-repeat="element in vm.navbarElements" md-icon="{{element.icon}}" md-heading="{{element.name}}" md-arrow="{{element.submenuItems}}" ng-click="vm.clickElement(element)">
                             <md-sidemenu-button ng-if="element.submenuItems" ng-repeat="subelement in element.submenuItems" ui-sref="{{subelement.state}}" ng-click="vm.clickElement(element)">{{subelement.name}}</md-sidemenu-button>
                         </md-sidemenu-content>
+                        
                     </md-sidemenu-group>
                 </md-sidemenu>
             </md-content>
@@ -54,23 +55,6 @@
                         </md-button>
                     </div>
                 </md-toolbar>
-            </div>
-
-            <div>
-                <md-nav-bar>
-                    <md-nav-item ng-repeat="element in vm.navbarElements" md-nav-href="{{element.href}}">
-                        {{element.name}}
-                    </md-nav-item>
-                </md-nav-bar>
-
-                <md-button class="md-primary">Click me</md-button>
-                <md-button class="md-accent">or maybe me</md-button>
-                <md-button class="md-warn">Careful</md-button>
-
-                <md-button class="md-primary">Click me</md-button>
-                <md-button class="md-primary md-hue-1">Click me</md-button>
-                <md-button class="md-primary md-hue-2">Click me</md-button>
-
             </div>
 
             <div class="container-fluid" layout-padding>

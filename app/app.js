@@ -87,7 +87,7 @@ var appMainModule = 'angularMaterial';
                 controller: 'VistaController',
                 controllerAs: 'vm',
                 resolve: helper.resolveFor('VistaCtrl'),
-                data: { displayRoute: ["Vista"] }
+                data: { displayRoute: ["Catálogos"] }
             })
             .state('app.vista2', {
                 url: '/vista2',
@@ -96,7 +96,7 @@ var appMainModule = 'angularMaterial';
                 controller: 'Vista2Controller',
                 controllerAs: 'vm',
                 resolve: helper.resolveFor('Vista2Ctrl'),
-                data: { displayRoute: ["Vista 2"] }
+                data: { displayRoute: ["Movimientos"] }
             })
             .state('app.vista3', {
                 url: '/vista3',
@@ -105,7 +105,7 @@ var appMainModule = 'angularMaterial';
                 controller: 'Vista3Controller',
                 controllerAs: 'vm',
                 resolve: helper.resolveFor('Vista3Ctrl'),
-                data: { displayRoute: ["Vista 3"] }
+                data: { displayRoute: ["Reportes"] }
             })
             .state('app.subvista1', {
                 url: '/subvista1',
@@ -346,26 +346,14 @@ var appMainModule = 'angularMaterial';
             {
                 name: "Catálogos",
                 href: "#!/app/vista",
-                icon: "favorite",
+                icon: "folder",
                 state: "app.vista",
                 click: () => { $state.go('app.vista'); },
                 submenuItems: [
                     {
-                        name: "Artículos",
-                        href: "#!/app/subvista1/",
-                        state: "app.subvista1",
-                        submenuItems: [
-                            {
-                                name: "Materiales",
-                                href: "#!/app/subvista2",
-                                state: "app.subvista2"
-                            },
-                            {
-                                name: "Activos Fijos y Fungibles",
-                                href: "#!/app/subvista2",
-                                state: "app.subvista2"
-                            }
-                        ]
+                        name: "Materiales",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Activos Fijos y Fungibles",
@@ -374,28 +362,28 @@ var appMainModule = 'angularMaterial';
                     },
                     {
                         name: "Estados de Artículos",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
                     },
                     {
                         name: "Características de Artículos",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Marcas y Modelos",
-                        href: "#!/app/subvista2",
+                        href: "#!/app/subvista2",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                         state: "app.subvista2"
                     },
                     {
                         name: "Unidades de Medida",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
                     },
                     {
                         name: "Grupos y Subgrupos de Artículos",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Nomenclatura Contable",
@@ -404,13 +392,13 @@ var appMainModule = 'angularMaterial';
                     },
                     {
                         name: "Renglones",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
                     },
                     {
                         name: "Ejercicios Contables",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Bodegas",
@@ -419,13 +407,13 @@ var appMainModule = 'angularMaterial';
                     },
                     {
                         name: "Libros",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
                     },
                     {
                         name: "Propietarios",
-                        href: "#!/app/subvista2",
-                        state: "app.subvista2"
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     },
                     {
                         name: "Proveedores",
@@ -434,29 +422,143 @@ var appMainModule = 'angularMaterial';
                     },
                     {
                         name: "Tipos de Documentos",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
+                    },
+                    {
+                        name: "Personas Externas",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Entidades Externas",
                         href: "#!/app/subvista2",
                         state: "app.subvista2"
                     }
                 ]
             },
             {
-                name: "Vista 2",
+                name: "Movimientos de Almacén",
                 href: "#!/app/vista2",
-                icon: "build",
+                icon: "store mall directory",
                 state: "app.vista2",
                 click: () => { $state.go('app.vista2'); },
                 submenuItems: [
                     {
-                        name: "Submenu 3",
+                        name: "Solicitud de Ingreso de Expediente",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Buzón de Solicitudes de Ingreso",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Buzón de Requisiciones de Almacén",
                         href: "#!/app/subvista3",
                         state: "app.subvista3"
+                    },
+                    {
+                        name: "Solicitud de Egreso de Bienes",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Buzón de Solicitudes de Egreso",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Generación y Consulta de Kardex",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
+                    },
+                    {
+                        name: "Generación y Consulta de Libros",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
                     }
                 ]
             },
             {
-                name: "Vista 3",
+                name: "Movimientos de Inventarios",
+                href: "#!/app/vista2",
+                icon: "local_offer",
+                state: "app.vista2",
+                click: () => { $state.go('app.vista2'); },
+                submenuItems: [
+                    {
+                        name: "Buzón Requisiciones de Inventarios",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Solicitud de Ingreso de Expediente",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Buzón de Solicitudes de Ingreso",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
+                    },
+                    {
+                        name: "Buzón Solicitudes de Códigos de Inv.",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Re-impresión de Etiquetas",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Solicitud de Traslado de Bienes",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
+                    },
+                    {
+                        name: "Buzón de Solicitudes de Traslado",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Solicitud Tarjeta Responsabilidad",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Buzón Tarjeta Responsabilidad",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
+                    },
+                    {
+                        name: "Buzón Solicitud Solvencias",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    },
+                    {
+                        name: "Buzón Tarjeta Responsabilidad",
+                        href: "#!/app/subvista2",
+                        state: "app.subvista2"
+                    },
+                    {
+                        name: "Generación y Consulta de Libros",
+                        href: "#!/app/subvista3",
+                        state: "app.subvista3"
+                    },
+                    {
+                        name: "Boleta de Pago Bienes",
+                        href: "#!/app/subvista1",
+                        state: "app.subvista1"
+                    }
+                ]
+            },
+            {
+                name: "Reportes",
                 href: "#!/app/vista3",
-                icon: "code",
+                icon: "class",
                 state: "app.vista3",
                 click: () => { $state.go('app.vista3'); },
                 submenuItems: [
@@ -476,6 +578,49 @@ var appMainModule = 'angularMaterial';
                         state: "app.subvista6"
                     }
                 ]
+            },
+            {
+                name: "Servicios",
+                href: "#!/app/vista3",
+                icon: "info",
+                state: "app.vista3",
+                click: () => { $state.go('app.vista3'); },
+                submenuItems: [
+                    {
+                        name: "Requisición de Egreso de Bienes",
+                        href: "#!/app/subvista4",
+                        state: "app.subvista4"
+                    },
+                    {
+                        name: "Consulta Tarjeta Auxiliar",
+                        href: "#!/app/subvista5",
+                        state: "app.subvista5"
+                    },
+                    {
+                        name: "Boleta de Pago Bienes",
+                        href: "#!/app/subvista6",
+                        state: "app.subvista6"
+                    }
+                ]
+            },
+            {
+                name: "Consultas",
+                href: "#!/app/vista3",
+                icon: "search",
+                state: "app.vista3",
+                click: () => { $state.go('app.vista3'); },
+                submenuItems: [
+                    {
+                        name: "Busqueda de Artículos",
+                        href: "#!/app/subvista4",
+                        state: "app.subvista4"
+                    },
+                    {
+                        name: "Consulta de Existencias",
+                        href: "#!/app/subvista5",
+                        state: "app.subvista5"
+                    }
+                ]
             }
         ];
 
@@ -490,19 +635,23 @@ var appMainModule = 'angularMaterial';
         };
 
         vm.showMobileMainHeader = true;
-        vm.openSideNavPanel = function() {
+
+        vm.openSideNavPanel = function() 
+        {
             $mdSidenav('left').open();
         };
-        vm.closeSideNavPanel = function() {
+
+        vm.closeSideNavPanel = function() 
+        {
             $mdSidenav('left').close();
         };
+
         vm.goToHome = function()
         {
             $state.go("app.home");
         };
         
         //Configuraciones del proyecto, nombre y quién lo desarrolla
-
         vm.projectName = "Sistema de Almacén e Inventarios";
         vm.poweredBy = "Powered By SIAMP";
 

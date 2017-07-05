@@ -34,3 +34,9 @@
   position: relative;
   z-index: 1;
 }
+.md-sidemenu-wrapper {
+  height: 0;
+}
+.md-sidemenu-wrapper.md-active {
+  height: auto;
+}
