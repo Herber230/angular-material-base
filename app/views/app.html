@@ -26,9 +26,9 @@
         </md-sidenav>
     </div>
 
-    <div flex>
+    <div flex  class="wrapper">
         <div layout="column" flex>
-            <div>
+            <div  class="header">
                 <md-toolbar md-colors="{background: '{{vm.colorTema}}-800'}">
                     <div class="md-toolbar-tools">
                         <md-button class="md-icon-button" aria-label="Side Panel" ng-click="vm.openSideNavPanel()" hide-gt-md>
@@ -78,11 +78,13 @@
 
             </div>
 
-            <div class="container-fluid" layout-padding>
+            <div class="container-fluid content" layout-padding>
                 <div ui-view="" autoscroll="false"></div>
             </div>
 
-            <footer class="footer">
+            
+        </div>
+        <footer class="footer" md-colors="{background: '{{vm.colorTema}}-800'}">
                 <br/>
                 <center>
                     <span class="footer-project-name">{{vm.projectName}}</span>
@@ -90,6 +92,5 @@
                 </center>
                 <br/>
             </footer>
-        </div>
     </div>
 </div>
