@@ -88,7 +88,7 @@ var appMainModule = 'angularMaterial';
                 data: { displayRoute: ["Vista"] }
             })
             .state('app.vista2', {
-                url: '/vista2',
+                url: '/vista2/:id',
                 title: 'Vista2',
                 templateUrl: helper.basepath('/shared/states/vista2/vista2.html'),
                 controller: 'Vista2Controller',
@@ -358,10 +358,10 @@ var appMainModule = 'angularMaterial';
             },
             {
                 name: "Vista 2",
-                href: "#!/app/vista2",
+                href: "#!/app/vista2/-1",
                 icon: "build",
                 state: "app.vista2",
-                click: () => { $state.go('app.vista2'); },
+                click: () => { $state.go('app.vista2', {id:-1}); },
                 submenuItems: [
                     {
                         name: "Submenu 3",

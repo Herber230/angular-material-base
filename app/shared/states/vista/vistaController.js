@@ -3,9 +3,9 @@
 
     angular.module(appMainModule).controller('VistaController', controller);
 
-    controller.$inject = ['$http', 'AppConfig', 'colorTema', 'EmpleadoService'];
+    controller.$inject = ['$http', 'AppConfig', 'colorTema', 'EmpleadoService', '$state'];
 
-    function controller($http, AppConfig, color, EmpleadoService) {
+    function controller($http, AppConfig, color, EmpleadoService, $state) {
         var vm = this;
         vm.colorTema = color;
         // Properties & Fields ===============================================================================================================================================
@@ -40,6 +40,12 @@
                 }
                 ,
                 null);
+        }
+
+        vm.editarEmpleado = function (empleado) {
+            if (empleado && empleado.id) {
+                $state.go('app.vista2', { id: empleado.id })
+            }
         }
 
 

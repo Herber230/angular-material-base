@@ -3,9 +3,9 @@
 
     angular.module(appMainModule).controller('Vista2Controller', controller);
 
-    controller.$inject = ['$http', 'AppConfig', 'EmpleadoService'];
+    controller.$inject = ['$http', 'AppConfig', 'EmpleadoService','$stateParams'];
 
-    function controller($http, AppConfig, EmpleadoService) {
+    function controller($http, AppConfig, EmpleadoService, $stateParams) {
         var vm = this;
 
         // Properties & Fields ===============================================================================================================================================
@@ -48,7 +48,20 @@
 
 
         function init() {
-
+            if($stateParams.id > 0 ){
+                EmpleadoService.getEmpleadoById(
+                    (responseSuccess) => {
+                   vm.empleado = responseSuccess.data;
+                }, (responseSuccess) => {
+                    swal(
+                        'Error!',
+                        'No se encontro el servidor!',
+                        'error'
+                    )
+                },
+                $stateParams.id
+                );
+            }
         };
 
 

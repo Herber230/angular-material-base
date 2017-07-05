@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row md-select="p" ng-repeat="p in vm.listadoEmpleados">
+                    <tr md-row md-select="p" ng-repeat="p in vm.listadoEmpleados" ng-click="vm.editarEmpleado(p)">
                         <td md-cell>{{p.id}}</td>
                         <td md-cell>{{p.firstName}}</td>
                         <td md-cell>{{p.lastName}}</td>

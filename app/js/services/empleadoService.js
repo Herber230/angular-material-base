@@ -38,11 +38,24 @@
 
         vm.saveEmpleado = function (empleado, actionSuccess, actionError) {
 
+            var method = 'POST';
+            if(empleado.id && empleado.id > 0 ){
+                method = 'PUT';
+            }
             var url = AppConfig.url + 'employee/'
             $http({
                 url: url,
-                method: 'POST',
+                method: method,
                 data: empleado
+            }).then(actionSuccess, actionError);
+        }
+
+        vm.getEmpleadoById = function (actionSuccess, actionError, id) {
+            var url = AppConfig.url + 'employee/' + id;
+
+            $http({
+                url: url,
+                method: 'GET'
             }).then(actionSuccess, actionError);
         }
 
